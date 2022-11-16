@@ -205,15 +205,8 @@ require_once("db.php");
                 padding: 9px !important;
               "
             class="attachment-block clearfix">
-<<<<<<< Updated upstream
-              <img
-              style="border-radius:8px !important;"
-              class="attachment-img" src="img/photo1.png" alt="Attachment Image">
-              
-=======
               <!-- <img class="attachment-img" src="img/photo1.png" alt="Attachment Image"> -->
               <img class="attachment-img" src="uploads/logo/<?php echo $row1['logo']; ?>" alt="companylogo" style="height: 50px !important; width:50px !important;">
->>>>>>> Stashed changes
               <div
              
               class="attachment-pushed">
