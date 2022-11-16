@@ -161,7 +161,7 @@ require_once("db.php");
             style="background-color: #199FD9 !important;
     color: white !important;
     border-radius: 8px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
     padding:14px !important;
     "
             >Search Jobs</a></p>
@@ -223,15 +223,26 @@ require_once("db.php");
     </section>
 
     <section id="candidates" class="content-header">
-      <div class="container">
+      <div class="container"
+      
+      >
         <div class="row">
-          <div class="col-md-12 text-center latest-job margin-bottom-20">
+          <div class="col-md-12 text-center latest-job margin-bottom-20
+          padding-right:2rem !important;
+          ">
             <h1>Candidates</h1>
             <p>Finding a job just got easier. Create a profile and apply with single mouse click.</p>            
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 col-md-4">
+          <div
+          style="
+          border-radius: 8px !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
+    padding: 2rem !important;
+    background-color: #199FD9  !important;
+          "
+          class="col-sm-4 col-md-4">
             <div class="thumbnail candidate-img">
               <img src="img/browse.jpg" alt="Browse Jobs">
               <div class="caption">
@@ -239,7 +250,14 @@ require_once("db.php");
               </div>
             </div>
           </div>
-          <div class="col-sm-4 col-md-4">
+          <div
+          style="
+          border-radius: 8px !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
+    padding: 2rem !important;
+    background-color: #199FD9  !important;
+          "
+          class="col-sm-4 col-md-4">
             <div class="thumbnail candidate-img">
               <img src="img/interviewed.jpeg" alt="Apply & Get Interviewed">
               <div class="caption">
@@ -247,7 +265,14 @@ require_once("db.php");
               </div>
             </div>
           </div>
-          <div class="col-sm-4 col-md-4">
+          <div
+          style="
+          border-radius: 8px !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
+    padding: 2rem !important;
+    background-color: #199FD9  !important;
+          "
+           class="col-sm-4 col-md-4">
             <div class="thumbnail candidate-img">
               <img src="img/career.jpg" alt="Start A Career">
               <div class="caption">
