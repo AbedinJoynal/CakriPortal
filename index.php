@@ -13,12 +13,14 @@ require_once("db.php");
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Cakri Portal</title>
+
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
@@ -26,6 +28,9 @@ require_once("db.php");
   <link rel="stylesheet" href="css/_all-skins.min.css">
   <!-- Custom -->
   <link rel="stylesheet" href="css/custom.css">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -34,45 +39,84 @@ require_once("db.php");
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
+  <header class="main-header" style="background-color:white !important; position:fixed !important; width:100% !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
+  ">
 
     <!-- Logo -->
     <a href="index.php" class="logo logo-bg">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>J</b>P</span>
+      <!-- <span class="logo-mini"><b>J</b>P</span> -->
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Job</b> Portal</span>
+      <!-- <span class="logo-lg"><b>Cakri <span style="color:white;
+      font-style:italic;
+      "
+      > Portal</span></b></span> -->
+      <!-- <span class="logo-lg"> -->
+        <img class='cakri-logo' src="./img/CakriPortal.png" alt="">
+      <!-- </span> -->
+      
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top" style="padding:0.5rem !important">
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li>
-            <a href="jobs.php">Jobs</a>
+            <a href="jobs.php">
+             Jobs
+              
+        </a>
           </li>
           <li>
-            <a href="#candidates">Candidates</a>
+            <a href="#candidates">
+            
+
+                Candidates
+            
+        </a>
           </li>
           <li>
-            <a href="#company">Company</a>
+            <a href="#company">
+           
+
+                Company
+              
+        </a>
           </li>
           <li>
-            <a href="#about">About Us</a>
+            <a href="#about">
+            
+
+                About Us
+                
+        </a>
           </li>
           <?php if(empty($_SESSION['id_user']) && empty($_SESSION['id_company'])) { ?>
           <li>
-            <a href="login.php">Login</a>
+            <a href="login.php">
+            
+
+                Login
+              
+        </a>
           </li>
           <li>
-            <a href="sign-up.php">Sign Up</a>
+            <a href="sign-up.php">
+           
+
+                Sign Up
+              
+        </a>
           </li>  
           <?php } else { 
 
@@ -104,9 +148,23 @@ require_once("db.php");
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center index-head">
-            <h1>All <strong>JOBS</strong> In One Place</h1>
-            <p>One search, global reach</p>
-            <p><a class="btn btn-success btn-lg" href="jobs.php" role="button">Search Jobs</a></p>
+            <h1
+            style="font-family: 'Montserrat', sans-serif !important;"
+            >Look for jobs on <strong>Cakri<span
+            style="color:#199FD9 !important;"
+            >portal</span></strong></h1>
+            <p
+            style="border-bottom: medium solid #fff;
+            padding-bottom: 1rem;"
+            >Get your desired job through one search</p>
+            <p><a class="btn btn-success btn-lg" href="jobs.php" role="button"
+            style="background-color: #199FD9 !important;
+    color: white !important;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding:14px !important;
+    "
+            >Search Jobs</a></p>
           </div>
         </div>
       </div>
@@ -116,7 +174,12 @@ require_once("db.php");
       <div class="container">
         <div class="row">
           <div class="col-md-12 latest-job margin-bottom-20">
-            <h1 class="text-center">Latest Jobs</h1>            
+            <h1 class="text-center"
+            style="color: #199FD9 !important;
+            text-align: center !important;
+            font-weight: 400 !important;
+            "
+            > Recent Jobs</h1>            
             <?php 
           /* Show any 4 random job post
            * 
@@ -137,7 +200,11 @@ require_once("db.php");
             <div class="attachment-block clearfix">
               <img class="attachment-img" src="img/photo1.png" alt="Attachment Image">
               <div class="attachment-pushed">
-                <h4 class="attachment-heading"><a href="view-job-post.php?id=<?php echo $row['id_jobpost']; ?>"><?php echo $row['jobtitle']; ?></a> <span class="attachment-heading pull-right">$<?php echo $row['maximumsalary']; ?>/Month</span></h4>
+                <h4
+                
+                class="attachment-heading"><a
+                style="text-transform: capitalize !important;"
+                href="view-job-post.php?id=<?php echo $row['id_jobpost']; ?>"><?php echo $row['jobtitle']; ?></a> <span class="attachment-heading pull-right">Tk <?php echo $row['maximumsalary']; ?> /Month</span></h4>
                 <div class="attachment-text">
                     <div><strong><?php echo $row1['companyname']; ?> | <?php echo $row1['city']; ?> | Experience <?php echo $row['experience']; ?> Years</strong></div>
                 </div>
@@ -363,7 +430,7 @@ require_once("db.php");
 
   <footer class="main-footer" style="margin-left: 0px;">
     <div class="text-center">
-      <strong>Copyright &copy; 2016-2017 <a href="jonsnow.netai.net">Job Portal</a>.</strong> All rights
+      <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
   </footer>

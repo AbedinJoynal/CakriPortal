@@ -22,7 +22,10 @@ require_once("../db.php");
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
@@ -38,24 +41,30 @@ require_once("../db.php");
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
+  <header class="main-header"
+  style="background-color:white !important; position:fixed !important; width:100% !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
+ 
+  "
+  >
 
     <!-- Logo -->
     <a href="index.php" class="logo logo-bg">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>J</b>P</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Job</b> Portal</span>
+    <img class='cakri-logo' src="../img/CakriPortal.png" alt="">
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top"
+    style="padding:0.5rem !important ;
+     
+    "
+
+    >
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -68,7 +77,9 @@ require_once("../db.php");
   </header>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="margin-left: 0px;">
+  <div class="content-wrapper" style="margin-left: 0px;
+  margin-top:5rem !important;
+  ">
 
     <section id="candidates" class="content-header">
       <div class="container">
@@ -90,7 +101,9 @@ require_once("../db.php");
               </div>
             </div>
           </div>
-          <div class="col-md-9 bg-white padding-2">
+          <div
+          style=" margin-top:5rem !important;"
+          class="col-md-9 bg-white padding-2">
             <h2><i>Recent Applications</i></h2>
             <p>Below you will find job roles you have applied for</p>
 
@@ -137,7 +150,7 @@ require_once("../db.php");
 
   <footer class="main-footer" style="margin-left: 0px;">
     <div class="text-center">
-      <strong>Copyright &copy; 2016-2017 <a href="jonsnow.netai.net">Job Portal</a>.</strong> All rights
+    <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
   </footer>
