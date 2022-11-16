@@ -205,7 +205,10 @@ require_once("db.php");
                 padding: 9px !important;
               "
             class="attachment-block clearfix">
-              <img class="attachment-img" src="img/photo1.png" alt="Attachment Image">
+              <img
+              style="border-radius:8px !important;"
+              class="attachment-img" src="img/photo1.png" alt="Attachment Image">
+              
               <div
              
               class="attachment-pushed">
