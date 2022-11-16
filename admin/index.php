@@ -37,10 +37,19 @@ if(isset($_SESSION['id_admin'])) {
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
+<body style="background-image: url(../img/admin-bg.jpg) !important;
+    width: 100% !important;
+    height: auto !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;" class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../index.php"><b>Job</b> Portal</a>
+    <!-- <a href="../index.php"><b>Job</b> Portal</a> -->
+    <div class="login-logo">
+            <a href="../index.php"><img style="width:27rem !important; height:10rem !important;"
+                    src="../img/CakriPortal.png" alt="chakriPortal"></a>
+        </div>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
