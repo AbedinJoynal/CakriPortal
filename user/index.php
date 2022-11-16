@@ -16,7 +16,7 @@ require_once("../db.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Job Portal</title>
+  <title>CakriPortal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -60,7 +60,7 @@ require_once("../db.php");
 
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top"
-    style="padding:0.5rem !important ;
+    style="padding:0rem !important ;
      
     "
 
@@ -102,7 +102,7 @@ require_once("../db.php");
             </div>
           </div>
           <div
-          style=" margin-top:5rem !important;"
+          style=" margin-top:0rem !important;"
           class="col-md-9 bg-white padding-2">
             <h2><i>Recent Applications</i></h2>
             <p>Below you will find job roles you have applied for</p>

@@ -152,7 +152,7 @@ require_once("db.php");
             style="font-family: 'Montserrat', sans-serif !important;"
             >Look for jobs on <strong>Cakri<span
             style="color:#199FD9 !important;"
-            >portal</span></strong></h1>
+            >Portal</span></strong></h1>
             <p
             style="border-bottom: medium solid #fff;
             padding-bottom: 1rem;"
@@ -199,7 +199,7 @@ require_once("db.php");
              ?>
             <div
             style="
-              background-color: rgb(83, 82, 82) !important;
+              background-color: rgba(88, 85, 87, 0.8) !important;
               color: white !important;
                 border-radius: 10px !important;
                 padding: 9px !important;
@@ -294,7 +294,7 @@ require_once("db.php");
           "
            class="col-sm-4 col-md-4">
             <div class="thumbnail candidate-img">
-              <img src="img/career.jpg" alt="Start A Career">
+              <img src="img/office.jpg" alt="Start A Career">
               <div class="caption">
                 <h3 
                 style="color: #199FD9 !important;
@@ -332,7 +332,7 @@ require_once("db.php");
         <div class="row">
           <div class="col-sm-4 col-md-4">
             <div class="thumbnail company-img">
-              <img src="img/postjob.png" alt="Browse Jobs">
+              <img src="img/hiring.jpg" alt="Browse Jobs">
               <div class="caption">
                 <h3 class="text-center"
                 style="color: #199FD9 !important;
@@ -344,7 +344,7 @@ require_once("db.php");
           </div>
           <div class="col-sm-4 col-md-4">
             <div class="thumbnail company-img">
-              <img src="img/manage.jpg" alt="Apply & Get Interviewed">
+              <img src="img/track.jpg" alt="Apply & Get Interviewed">
               <div class="caption">
                 <h3 class="text-center"
                 style="color: #199FD9 !important;
@@ -356,7 +356,7 @@ require_once("db.php");
           </div>
           <div class="col-sm-4 col-md-4">
             <div class="thumbnail company-img">
-              <img src="img/hire.png" alt="Start A Career">
+              <img src="img/hired.jpg" alt="Start A Career">
               <div class="caption">
                 <h3 class="text-center"
                 style="color: #199FD9 !important;
@@ -496,7 +496,7 @@ require_once("db.php");
           <div class="col-md-6 about-text margin-bottom-20"
           style="margin-bottom:8rem !important;"
           >
-            <p>The online job portal application allows job seekers and recruiters to connect.The application provides the ability for job seekers to create their accounts, upload their profile and resume, search for jobs, apply for jobs, view different job openings. The application provides the ability for companies to create their accounts, search candidates, create job postings, and view candidates applications.
+            <p>The CakriPortal application allows job seekers and recruiters to connect. The application provides the ability for job seekers to create their accounts, upload their profile and resume, search for jobs, apply for jobs, view different job openings. The application provides the ability for companies to create their accounts, search candidates, create job postings, and view candidates applications.
             </p>
             <p>
               This website is used to provide a platform for potential candidates to get their dream job and excel in yheir career.

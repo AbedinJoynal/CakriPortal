@@ -16,7 +16,7 @@ require_once("../db.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Job Portal</title>
+  <title>CakriPortal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -54,10 +54,7 @@ require_once("../db.php");
 
     <!-- Logo -->
     <a href="index.php" class="logo logo-bg">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>J</b>P</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Job</b> Portal</span>
+    <img class='cakri-logo' src="../img/CakriPortal.png" alt="">
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -126,6 +123,10 @@ require_once("../db.php");
                   </div>
 
                   <div class="form-group">
+                    <input type="text" class="form-control  input-lg" id="onsite" name="jobtype" placeholder="remote/on-site Required" required="">
+                  </div>
+
+                  <div class="form-group">
                     <button type="submit" class="btn btn-flat btn-success">Create</button>
                   </div>
                 </div>
@@ -143,8 +144,12 @@ require_once("../db.php");
   <!-- /.content-wrapper -->
 
   <footer class="main-footer" style="margin-left: 0px;">
-    <div class="text-center">
-      <strong>Copyright &copy; 2016-2017 <a href="jonsnow.netai.net">Job Portal</a>.</strong> All rights
+  <div
+    style="font-size:2rem !important;
+    font-weight: 400 !important;
+    "
+    class="text-center">
+      <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
   </footer>

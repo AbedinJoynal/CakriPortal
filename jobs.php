@@ -169,6 +169,32 @@ require_once("db.php");
                                                             class="fa fa-circle-o text-yellow"></i> > 5 Years</a></li>
                                             </ul>
                                         </li>
+                                        <!-- filter job type -->
+                                        <li class="treeview menu-open">
+                                            <a href="#"><i class="fa fa-plane text-red"></i> Job Type <span
+                                                    class="pull-right"><i
+                                                        class="fa fa-angle-down pull-right"></i></span></a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="" class="jobtypeSearch" data-target='full-time'><i
+                                                            class="fa fa-circle-o text-yellow"></i> > full-time</a></li>
+                                                <li><a href="" class="jobtypeSearch" data-target='contractual'><i
+                                                            class="fa fa-circle-o text-yellow"></i> > Contractual</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- filter remote/onsite -->
+                                        <li class="treeview menu-open">
+                                            <a href="#"><i class="fa fa-plane text-red"></i> Remote/On-site <span
+                                                    class="pull-right"><i
+                                                        class="fa fa-angle-down pull-right"></i></span></a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="" class="onsiteSearch" data-target='remote'><i
+                                                            class="fa fa-circle-o text-yellow"></i> > remote</a></li>
+                                                <li><a href="" class="onsiteSearch" data-target='on-site'><i
+                                                            class="fa fa-circle-o text-yellow"></i> > on-site</a></li>
+                                                <li><a href="" class="onsiteSearch" data-target='hybrid'><i
+                                                            class="fa fa-circle-o text-yellow"></i> > hybrid</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -212,10 +238,14 @@ require_once("db.php");
         <!-- /.content-wrapper -->
 
         <footer class="main-footer" style="margin-left: 0px;">
-            <div class="text-center">
-                <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
-                reserved.
-            </div>
+        <div
+    style="font-size:2rem !important;
+    font-weight: 400 !important;
+    "
+    class="text-center">
+      <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
+    reserved.
+    </div>
         </footer>
 
         <!-- /.control-sidebar -->
@@ -313,6 +343,38 @@ require_once("db.php");
             }
         });
     }
+    </script>
+
+    <!-- jobtype search -->
+    <script>
+    $(".jobtypeSearch").on("click", function(e) {
+        e.preventDefault();
+        var searchResult = $(this).data("target");
+        var filter = "jobtype";
+        if (searchResult != "") {
+            $("#pagination").twbsPagination('destroy');
+            Search(searchResult, filter);
+        } else {
+            $("#pagination").twbsPagination('destroy');
+            Pagination();
+        }
+    });
+    </script>
+
+    <!-- remote/onsite search -->
+    <script>
+    $(".onsiteSearch").on("click", function(e) {
+        e.preventDefault();
+        var searchResult = $(this).data("target");
+        var filter = "onsite";
+        if (searchResult != "") {
+            $("#pagination").twbsPagination('destroy');
+            Search(searchResult, filter);
+        } else {
+            $("#pagination").twbsPagination('destroy');
+            Pagination();
+        }
+    });
     </script>
 
 
