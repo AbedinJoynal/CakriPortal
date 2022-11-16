@@ -175,11 +175,11 @@ require_once("db.php");
         <div class="row">
           <div class="col-md-12 latest-job margin-bottom-20">
             <h1 class="text-center"
-            style="color: #199FD9 !important;
+            style="
             text-align: center !important;
-            font-weight: 400 !important;
+            font-weight: 600 !important;
             "
-            > Recent Jobs</h1>            
+            >Recent <span style="color: #199FD9 !important;">Jobs</span></h1>            
             <?php 
           /* Show any 4 random job post
            * 
@@ -197,15 +197,28 @@ require_once("db.php");
                 while($row1 = $result1->fetch_assoc()) 
                 {
              ?>
-            <div class="attachment-block clearfix">
+            <div
+            style="
+              background-color: #199FD9 !important;
+              color: white !important;
+                border-radius: 10px !important;
+                padding: 9px !important;
+              "
+            class="attachment-block clearfix">
               <img class="attachment-img" src="img/photo1.png" alt="Attachment Image">
-              <div class="attachment-pushed">
+              <div
+             
+              class="attachment-pushed">
                 <h4
-                
+                style="color: white !important;"
                 class="attachment-heading"><a
-                style="text-transform: capitalize !important;"
+                style="text-transform: capitalize !important;
+                color: white !important;
+                "
                 href="view-job-post.php?id=<?php echo $row['id_jobpost']; ?>"><?php echo $row['jobtitle']; ?></a> <span class="attachment-heading pull-right">Tk <?php echo $row['maximumsalary']; ?> /Month</span></h4>
-                <div class="attachment-text">
+                <div
+                style="color: white !important;"
+                class="attachment-text">
                     <div><strong><?php echo $row1['companyname']; ?> | <?php echo $row1['city']; ?> | Experience <?php echo $row['experience']; ?> Years</strong></div>
                 </div>
               </div>
@@ -228,55 +241,66 @@ require_once("db.php");
       >
         <div class="row">
           <div class="col-md-12 text-center latest-job margin-bottom-20
-          padding-right:2rem !important;
+          
           ">
-            <h1>Candidates</h1>
-            <p>Finding a job just got easier. Create a profile and apply with single mouse click.</p>            
+            <h1
+            style=" font-weight: 600 !important;
+            color: #199FD9 !important;
+            "
+            >Candidates</h1>
+            <p
+            style="font-size:2rem !important;"
+            >Finding a job just got easier. Create a profile and apply with single mouse click.</p>            
           </div>
         </div>
         <div class="row">
           <div
-          style="
-          border-radius: 8px !important;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
-    padding: 2rem !important;
-    background-color: #199FD9  !important;
-          "
+
+          style="border-radius: 8px !important;"
           class="col-sm-4 col-md-4">
-            <div class="thumbnail candidate-img">
+            <div
+            
+            class="thumbnail candidate-img">
               <img src="img/browse.jpg" alt="Browse Jobs">
               <div class="caption">
-                <h3 class="text-center">Browse Jobs</h3>
+                <h3 class="text-center"
+                style="color: #199FD9 !important;
+                 font-weight: 600 !important;
+                "
+                >Browse <span style="color:black">Jobs</span></h3>
               </div>
             </div>
           </div>
           <div
           style="
-          border-radius: 8px !important;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
-    padding: 2rem !important;
-    background-color: #199FD9  !important;
+         border-radius: 8px !important;
           "
           class="col-sm-4 col-md-4">
             <div class="thumbnail candidate-img">
               <img src="img/interviewed.jpeg" alt="Apply & Get Interviewed">
               <div class="caption">
-                <h3 class="text-center">Apply & Get Interviewed</h3>
+                <h3
+                style="color: #199FD9 !important;
+                 font-weight: 600 !important;
+                "
+                class="text-center">Apply & <span style="color:black">Get Interviewed</span></h3>
               </div>
             </div>
           </div>
           <div
           style="
-          border-radius: 8px !important;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
-    padding: 2rem !important;
-    background-color: #199FD9  !important;
+        border-radius: 8px !important;
           "
            class="col-sm-4 col-md-4">
             <div class="thumbnail candidate-img">
               <img src="img/career.jpg" alt="Start A Career">
               <div class="caption">
-                <h3 class="text-center">Start A Career</h3>
+                <h3 
+                style="color: #199FD9 !important;
+                 font-weight: 600 !important;
+                "
+                class="text-center"
+                >Start <span style="color:black">Career</h3>
               </div>
             </div>
           </div>
@@ -288,8 +312,20 @@ require_once("db.php");
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center latest-job margin-bottom-20">
-            <h1>Companies</h1>
-            <p>Hiring? Register your company for free, browse our talented pool, post and track job applications</p>            
+            <h1
+            style=" font-weight: 600 !important;
+            margin-top:5rem !important;
+            padding-bottom: 2rem !important;
+            border-bottom: 2.5px solid black !important;
+            "
+            >Companies</h1>
+            <p
+            style="font-size:2rem !important;
+            color: #199FD9 !important;
+            margin-top:4rem !important;
+            margin-bottom:2rem !important;
+            "
+            > <span style="color:black">Hiring? </span>Register your company for free, browse our talented pool, post and track job applications</p>            
           </div>
         </div>
         <div class="row">
@@ -297,7 +333,11 @@ require_once("db.php");
             <div class="thumbnail company-img">
               <img src="img/postjob.png" alt="Browse Jobs">
               <div class="caption">
-                <h3 class="text-center">Post A Job</h3>
+                <h3 class="text-center"
+                style="color: #199FD9 !important;
+                 font-weight: 600 !important;
+                "
+                >Post A <span style="color:black">Job<span></h3>
               </div>
             </div>
           </div>
@@ -305,7 +345,11 @@ require_once("db.php");
             <div class="thumbnail company-img">
               <img src="img/manage.jpg" alt="Apply & Get Interviewed">
               <div class="caption">
-                <h3 class="text-center">Manage & Track</h3>
+                <h3 class="text-center"
+                style="color: #199FD9 !important;
+                 font-weight: 600 !important;
+                "
+                >Manage & <span style="color:black">Track</span></h3>
               </div>
             </div>
           </div>
@@ -313,7 +357,11 @@ require_once("db.php");
             <div class="thumbnail company-img">
               <img src="img/hire.png" alt="Start A Career">
               <div class="caption">
-                <h3 class="text-center">Hire</h3>
+                <h3 class="text-center"
+                style="color: #199FD9 !important;
+                 font-weight: 600 !important;
+                "
+                >Hire</h3>
               </div>
             </div>
           </div>
@@ -325,7 +373,11 @@ require_once("db.php");
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center latest-job margin-bottom-20">
-            <h1>Our Statistics</h1>
+            <h1
+           style=" font-weight: 600 !important;
+           color: black !important;
+           "
+            >Our <span style="color:#199FD9 !important;">Statistics</span></h1>
           </div>
         </div>
         <div class="row">
@@ -429,14 +481,20 @@ require_once("db.php");
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center latest-job margin-bottom-20">
-            <h1>About US</h1>                      
+            <h1
+            style=" font-weight: 600 !important;
+           color: black !important;
+           "
+            >About <span style="color:#199FD9 !important;">Us</span></h1>                      
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <img src="img/browse.jpg" class="img-responsive">
           </div>
-          <div class="col-md-6 about-text margin-bottom-20">
+          <div class="col-md-6 about-text margin-bottom-20"
+          style="margin-bottom:8rem !important;"
+          >
             <p>The online job portal application allows job seekers and recruiters to connect.The application provides the ability for job seekers to create their accounts, upload their profile and resume, search for jobs, apply for jobs, view different job openings. The application provides the ability for companies to create their accounts, search candidates, create job postings, and view candidates applications.
             </p>
             <p>
@@ -454,7 +512,11 @@ require_once("db.php");
   <!-- /.content-wrapper -->
 
   <footer class="main-footer" style="margin-left: 0px;">
-    <div class="text-center">
+    <div
+    style="font-size:2rem !important;
+    font-weight: 400 !important;
+    "
+    class="text-center">
       <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
