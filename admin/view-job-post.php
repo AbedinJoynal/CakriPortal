@@ -27,7 +27,7 @@ if($result1->num_rows > 0)
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Job Portal</title>
+  <title>CakriPortal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -59,10 +59,7 @@ if($result1->num_rows > 0)
 
     <!-- Logo -->
     <a href="index.php" class="logo logo-bg">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>J</b>P</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Job</b> Portal</span>
+    <img class='cakri-logo' src="../img/CakriPortal.png" alt="">
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -95,9 +92,17 @@ if($result1->num_rows > 0)
               <p><span class="margin-right-10"><i class="fa fa-location-arrow text-green"></i> <?php echo $row['city']; ?></span> <i class="fa fa-calendar text-green"></i> <?php echo date("d-M-Y", strtotime($row['createdat'])); ?></p>              
             </div>
             <div>
+              Salary: BDT
+              <?php echo stripcslashes($row['minimumsalary']); ?>
+              -
+              <?php echo stripcslashes($row['maximumsalary']); ?>
+            </div>
+            <div>
               <?php echo stripcslashes($row['description']); ?>
             </div>
-            
+            <div>
+              <?php echo stripcslashes($row['jobtype']); ?>
+            </div>
             
           </div>
           <div class="col-md-3">
@@ -120,7 +125,7 @@ if($result1->num_rows > 0)
 
   <footer class="main-footer" style="margin-left: 0px;">
     <div class="text-center">
-    <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
+    <strong>Copyright &copy; 2022 <a href="index.php">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
   </footer>

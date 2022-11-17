@@ -47,10 +47,7 @@ require_once("db.php");
 
             <!-- Logo -->
             <a href="index.php" class="logo logo-bg">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>J</b>P</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Job</b> Portal</span>
+                <img class='cakri-logo' src="./img/CakriPortal.png" alt="">
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
@@ -217,7 +214,7 @@ require_once("db.php");
         font-weight: 400 !important;
         "
         class="text-center">
-        <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
+        <strong>Copyright &copy; 2022 <a href="index.php">Cakri Portal</a>.</strong> All rights
         reserved.
         </div>
         </footer>

@@ -134,7 +134,7 @@ if (isset($_SESSION['id_user']) || isset($_SESSION['id_company'])) {
     font-weight: 400 !important;
     "
     class="text-center">
-      <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
+      <strong>Copyright &copy; 2022 <a href="index.php">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
         </footer>

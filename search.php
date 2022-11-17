@@ -68,7 +68,7 @@ if(isset($_GET['filter']) && $_GET['filter']=='city') {
     // $sql = "SELECT * FROM job_post WHERE maximumsalary >= '$_GET[search]' and maximumsalary < ('$_GET[search]' + 20000) LIMIT $start_from, $limit";
     $sql = "SELECT * FROM job_post WHERE  
     maximumsalary between '$_GET[search]' and ('$_GET[search]' + 
-    if('$_GET[search]' between 100000 and 500000, 500000, 20000))  
+    if('$_GET[search]' between 100000 and 500000, 500000, 19999))  
     order by maximumsalary LIMIT $start_from, $limit";
   }
 

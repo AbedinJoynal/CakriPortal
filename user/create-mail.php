@@ -16,7 +16,7 @@ require_once("../db.php");
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Job Portal</title>
+  <title>CakriPortal</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -143,7 +143,7 @@ require_once("../db.php");
 
   <footer class="main-footer" style="margin-left: 0px;">
     <div class="text-center">
-      <strong>Copyright &copy; 2016-2017 <a href="jonsnow.netai.net">Job Portal</a>.</strong> All rights
+      <strong>Copyright &copy; 2022 <a href="index.php">CakriPortal</a>.</strong> All rights
     reserved.
     </div>
   </footer>

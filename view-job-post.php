@@ -40,7 +40,9 @@ require_once("db.php");
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header">
+<header class="main-header" style="background-color:white !important; position:fixed !important; width:100% !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
+  ">
 
     <!-- Logo -->
     <a href="index.php" class="logo logo-bg">
@@ -48,24 +50,43 @@ require_once("db.php");
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="login.php">Login</a>
-          </li>
-          <li>
-            <a href="sign-up.php">Sign Up</a>
-          </li>          
-        </ul>
-      </div>
-    </nav>
+    <nav class="navbar navbar-static-top" style="padding:0.5rem !important;">
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <?php if (empty($_SESSION['id_user']) && empty($_SESSION['id_company'])) { ?>
+                        <li>
+                            <a href="login.php">Login</a>
+                        </li>
+                        <li>
+                            <a href="sign-up.php">Sign Up</a>
+                        </li>
+                        <?php } else {
+
+              if (isset($_SESSION['id_user'])) {
+              ?>
+                        <li>
+                            <a href="user/index.php">Dashboard</a>
+                        </li>
+                        <?php
+              } else if (isset($_SESSION['id_company'])) {
+              ?>
+                        <li>
+                            <a href="company/index.php">Dashboard</a>
+                        </li>
+                        <?php } ?>
+                        <li>
+                            <a href="logout.php">Logout</a>
+                        </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </nav>
   </header>
 
 
 
-  <div class="content-wrapper" style="margin-left: 0px;">
+  <div class="content-wrapper margin-top-50" style="margin-left: 0px;">
 
   <?php
   
@@ -93,7 +114,7 @@ require_once("db.php");
               <p><span class="margin-right-10"><i class="fa fa-location-arrow text-green"></i> <?php echo $row['city']; ?></span> <i class="fa fa-calendar text-green"></i> <?php echo date("d-M-Y", strtotime($row['createdat'])); ?></p>              
             </div>
             <div>
-              Salary: Tk
+              Salary: BDT
               <?php echo stripcslashes($row['minimumsalary']); ?>
               -
               <?php echo stripcslashes($row['maximumsalary']); ?>
@@ -148,7 +169,7 @@ require_once("db.php");
 
   <footer class="main-footer" style="margin-left: 0px;">
     <div class="text-center">
-    <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
+    <strong>Copyright &copy; 2022 <a href="index.php">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
   </footer>
