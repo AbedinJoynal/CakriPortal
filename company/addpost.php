@@ -25,7 +25,7 @@ if(isset($_POST)) {
 	$jobtitle = mysqli_real_escape_string($conn, $_POST['jobtitle']);
 	$description = mysqli_real_escape_string($conn, $_POST['description']);
 	$minimumsalary = mysqli_real_escape_string($conn, $_POST['minimumsalary']);
-	$maximumsalary = mysqli_real_escape_string($conn, $_POST['maximumsalary']);
+	$maximumsalary = mysqli_real_escape_string($conn, (int)$_POST['maximumsalary']);
 	$experience = mysqli_real_escape_string($conn, $_POST['experience']);
 	$qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
 	$jobtype = mysqli_real_escape_string($conn, $_POST['jobtype']);

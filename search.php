@@ -52,22 +52,24 @@ if(isset($_GET['filter']) && $_GET['filter']=='city') {
 
     $search = $_GET['search'];
     $sql = "SELECT * FROM job_post WHERE jobtitle LIKE '%$search%' LIMIT $start_from, $limit";
-    
-
-  } else if(isset($_GET['filter']) && $_GET['filter']=='experience') {
+  } 
+  else if(isset($_GET['filter']) && $_GET['filter']=='experience') {
 
     $sql = "SELECT * FROM job_post WHERE experience>='$_GET[search]' LIMIT $start_from, $limit";
-
   }
   else if(isset($_GET['filter']) && $_GET['filter']=='jobtype') {
 
     $sql = "SELECT * FROM job_post WHERE jobtype ='$_GET[search]' LIMIT $start_from, $limit";
-
   }
   else if(isset($_GET['filter']) && $_GET['filter']=='onsite') {
-
     $sql = "SELECT * FROM job_post WHERE onsite ='$_GET[search]' LIMIT $start_from, $limit";
-
+  }
+  else if(isset($_GET['filter']) && $_GET['filter']=='maximumsalary') {
+    // $sql = "SELECT * FROM job_post WHERE maximumsalary >= '$_GET[search]' and maximumsalary < ('$_GET[search]' + 20000) LIMIT $start_from, $limit";
+    $sql = "SELECT * FROM job_post WHERE  
+    maximumsalary between '$_GET[search]' and ('$_GET[search]' + 
+    if('$_GET[search]' between 100000 and 500000, 500000, 20000))  
+    order by maximumsalary LIMIT $start_from, $limit";
   }
 
   $result = $conn->query($sql);

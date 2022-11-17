@@ -123,7 +123,7 @@ require_once("../db.php");
                   </div>
 
                   <div class="form-group">
-                    <input type="text" class="form-control  input-lg" id="onsite" name="jobtype" placeholder="remote/on-site Required" required="">
+                    <input type="text" class="form-control  input-lg" id="onsite" name="onsite" placeholder="remote/on-site Required" required="">
                   </div>
 
                   <div class="form-group">

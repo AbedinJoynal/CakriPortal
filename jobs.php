@@ -195,6 +195,27 @@ require_once("db.php");
                                                             class="fa fa-circle-o text-yellow"></i> > hybrid</a></li>
                                             </ul>
                                         </li>
+
+                                        <!-- filter salary -->
+                                        <li class="treeview menu-open">
+                                            <a href="#"><i class="fa fa-plane text-red"></i> Salary <span
+                                                    class="pull-right"><i
+                                                        class="fa fa-angle-down pull-right"></i></span></a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="" class="salarySearch" data-target=00000><i
+                                                            class="fa fa-circle-o text-yellow"></i> <20k </a></li>
+                                                <li><a href="" class="salarySearch" data-target=20000><i
+                                                            class="fa fa-circle-o text-yellow"></i> 20k-40k</a></li>
+                                                <li><a href="" class="salarySearch" data-target=40000><i
+                                                            class="fa fa-circle-o text-yellow"></i> 40k-60k</a></li>
+                                                <li><a href="" class="salarySearch" data-target=60000><i
+                                                            class="fa fa-circle-o text-yellow"></i> 60k-80k</a></li>
+                                                <li><a href="" class="salarySearch" data-target=80000><i
+                                                            class="fa fa-circle-o text-yellow"></i> 80-100k</a></li>
+                                                <li><a href="" class="salarySearch" data-target=100000><i
+                                                        class="fa fa-circle-o text-yellow"></i> > 100k</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -367,6 +388,22 @@ require_once("db.php");
         e.preventDefault();
         var searchResult = $(this).data("target");
         var filter = "onsite";
+        if (searchResult != "") {
+            $("#pagination").twbsPagination('destroy');
+            Search(searchResult, filter);
+        } else {
+            $("#pagination").twbsPagination('destroy');
+            Pagination();
+        }
+    });
+    </script>
+
+    <!-- salary search -->
+    <script>
+    $(".salarySearch").on("click", function(e) {
+        e.preventDefault();
+        var searchResult = $(this).data("target");
+        var filter = "maximumsalary";
         if (searchResult != "") {
             $("#pagination").twbsPagination('destroy');
             Search(searchResult, filter);

@@ -44,10 +44,7 @@ require_once("db.php");
 
     <!-- Logo -->
     <a href="index.php" class="logo logo-bg">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>J</b>P</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Job</b> Portal</span>
+    <img class='cakri-logo' src="./img/CakriPortal.png" alt="">
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -96,13 +93,19 @@ require_once("db.php");
               <p><span class="margin-right-10"><i class="fa fa-location-arrow text-green"></i> <?php echo $row['city']; ?></span> <i class="fa fa-calendar text-green"></i> <?php echo date("d-M-Y", strtotime($row['createdat'])); ?></p>              
             </div>
             <div>
+              Salary: BDT 
+              <?php echo stripcslashes($row['minimumsalary']); ?>
+              -
+              <?php echo stripcslashes($row['maximumsalary']); ?>
+            </div>
+            <div>
+              <?php echo stripcslashes($row['description']); ?>
+            </div>
+            <div>
               <?php echo stripcslashes($row['jobtype']); ?>
             </div>
             <div>
               <?php echo stripcslashes($row['onsite']); ?>
-            </div>
-            <div>
-              <?php echo stripcslashes($row['description']); ?>
             </div>
             <?php 
             if(isset($_SESSION["id_user"]) && empty($_SESSION['companyLogged'])) { ?>
