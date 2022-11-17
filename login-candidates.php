@@ -37,9 +37,14 @@ if (isset($_SESSION['id_user']) || isset($_SESSION['id_company'])) {
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-
-<body class="hold-transition login-page">
-    <div class="login-box">
+ <!-- change canditate login page background and opacity here -->
+<body 
+style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./img/admin-bg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;"
+class="hold-transition login-page">
+    <!-- login top part image -->
+    <div class="login-box"
+   
+    >
         <div class="login-logo">
             <a href="index.php"><img style="width:27rem !important; height:10rem !important;"
                     src="./img/CakriPortal.png" alt="chakriPortal"></a>

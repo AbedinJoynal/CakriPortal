@@ -93,7 +93,7 @@ require_once("db.php");
               <p><span class="margin-right-10"><i class="fa fa-location-arrow text-green"></i> <?php echo $row['city']; ?></span> <i class="fa fa-calendar text-green"></i> <?php echo date("d-M-Y", strtotime($row['createdat'])); ?></p>              
             </div>
             <div>
-              Salary: BDT 
+              Salary: Tk
               <?php echo stripcslashes($row['minimumsalary']); ?>
               -
               <?php echo stripcslashes($row['maximumsalary']); ?>
@@ -104,8 +104,9 @@ require_once("db.php");
             <div>
               <?php echo stripcslashes($row['jobtype']); ?>
             </div>
-            <div>
-              <?php echo stripcslashes($row['onsite']); ?>
+            <div
+            style="font-weight: bold !important;">
+            <?php echo stripcslashes($row['onsite']); ?>
             </div>
             <?php 
             if(isset($_SESSION["id_user"]) && empty($_SESSION['companyLogged'])) { ?>
@@ -147,7 +148,7 @@ require_once("db.php");
 
   <footer class="main-footer" style="margin-left: 0px;">
     <div class="text-center">
-      <strong>Copyright &copy; 2016-2017 <a href="jonsnow.netai.net">Job Portal</a>.</strong> All rights
+    <strong>Copyright &copy; 2022 <a href="jonsnow.netai.net">Cakri Portal</a>.</strong> All rights
     reserved.
     </div>
   </footer>

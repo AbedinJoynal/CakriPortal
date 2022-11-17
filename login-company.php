@@ -39,7 +39,9 @@ if (isset($_SESSION['id_user']) || isset($_SESSION['id_company'])) {
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page"
+style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./img/admin-bg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;"
+>
     <div class="login-box">
         <div class="login-logo">
             <a href="index.php"><img style="width:27rem !important; height:10rem !important;"

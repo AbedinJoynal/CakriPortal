@@ -203,7 +203,7 @@ require_once("db.php");
                                                         class="fa fa-angle-down pull-right"></i></span></a>
                                             <ul class="treeview-menu">
                                                 <li><a href="" class="salarySearch" data-target=00000><i
-                                                            class="fa fa-circle-o text-yellow"></i> <20k </a></li>
+                                                            class="fa fa-circle-o text-yellow"></i> < 20k</a> </li>
                                                 <li><a href="" class="salarySearch" data-target=20000><i
                                                             class="fa fa-circle-o text-yellow"></i> 20k-40k</a></li>
                                                 <li><a href="" class="salarySearch" data-target=40000><i
@@ -258,7 +258,10 @@ require_once("db.php");
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer" style="margin-left: 0px;">
+        <footer class="main-footer" style="margin:auto !important;
+        
+        ">
+       
         <div
     style="font-size:2rem !important;
     font-weight: 400 !important;

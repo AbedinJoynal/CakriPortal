@@ -44,12 +44,15 @@ if (isset($_SESSION['id_user']) || isset($_SESSION['id_company'])) {
 
 </head>
 
-<body class="hold-transition skin-green sidebar-mini">
-    <div class="wrapper">
+<body class="hold-transition skin-green sidebar-mini"
 
-        <header class="main-header" style="background-color:white !important; position:fixed !important; width:100% !important;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;
-  ">
+>
+    <div class="wrapper"
+   >
+     <header class="main-header" 
+     style="background-color:white !important; position:fixed !important; width:100% !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2) !important;"
+  >
 
             <!-- Logo -->
             <a href="index.php" class="logo logo-bg">

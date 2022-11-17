@@ -118,6 +118,14 @@ require_once("db.php");
               
         </a>
           </li>  
+          <li>
+            <a href="admin/index.php">
+           
+
+                Admin
+              
+        </a>
+          </li>  
           <?php } else { 
 
             if(isset($_SESSION['id_user'])) { 
@@ -172,12 +180,17 @@ require_once("db.php");
 
     <section class="content-header">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12 latest-job margin-bottom-20">
+        <div class="row"
+       
+        >
+          <div class="col-md-12 latest-job margin-bottom-20"
+         
+          >
             <h1 class="text-center"
             style="
             text-align: center !important;
             font-weight: 600 !important;
+            
             "
             >Recent <span style="color: #199FD9 !important;">Jobs</span></h1>            
             <?php 
@@ -205,7 +218,7 @@ require_once("db.php");
                 padding: 9px !important;
               "
             class="attachment-block clearfix">
-              <!-- <img class="attachment-img" src="img/photo1.png" alt="Attachment Image"> -->
+         
               <img class="attachment-img" src="uploads/logo/<?php echo $row1['logo']; ?>" alt="companylogo" style="height: 50px !important; width:50px !important;">
               <div
              
