@@ -1,14 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Aug 10, 2019 at 04:47 PM
--- Server version: 5.6.35
--- PHP Version: 7.0.15
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 17, 2022 at 12:18 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `git_repos_jobportal`
@@ -20,11 +27,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id_admin` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_admin`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -40,13 +49,15 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 -- Table structure for table `apply_job_post`
 --
 
-CREATE TABLE `apply_job_post` (
-  `id_apply` int(11) NOT NULL,
+DROP TABLE IF EXISTS `apply_job_post`;
+CREATE TABLE IF NOT EXISTS `apply_job_post` (
+  `id_apply` int(11) NOT NULL AUTO_INCREMENT,
   `id_jobpost` int(11) NOT NULL,
   `id_company` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_apply`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `apply_job_post`
@@ -70,7 +81,12 @@ INSERT INTO `apply_job_post` (`id_apply`, `id_jobpost`, `id_company`, `id_user`,
 (22, 22, 12, 13, 0),
 (23, 22, 12, 14, 0),
 (24, 23, 12, 14, 0),
-(25, 34, 18, 14, 2);
+(25, 34, 18, 14, 2),
+(26, 24, 17, 14, 0),
+(27, 35, 19, 15, 1),
+(28, 22, 12, 15, 0),
+(29, 35, 19, 16, 2),
+(30, 31, 14, 14, 0);
 
 -- --------------------------------------------------------
 
@@ -78,11 +94,13 @@ INSERT INTO `apply_job_post` (`id_apply`, `id_jobpost`, `id_company`, `id_user`,
 -- Table structure for table `cities`
 --
 
-CREATE TABLE `cities` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `cities`;
+CREATE TABLE IF NOT EXISTS `cities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
-  `state_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `state_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48315 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cities`
@@ -48433,8 +48451,9 @@ INSERT INTO `cities` (`id`, `name`, `state_id`) VALUES
 -- Table structure for table `company`
 --
 
-CREATE TABLE `company` (
-  `id_company` int(11) NOT NULL,
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE IF NOT EXISTS `company` (
+  `id_company` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `companyname` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
@@ -48447,8 +48466,10 @@ CREATE TABLE `company` (
   `aboutme` varchar(255) DEFAULT NULL,
   `logo` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `active` int(11) NOT NULL DEFAULT '2'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `active` int(11) NOT NULL DEFAULT '2',
+  PRIMARY KEY (`id_company`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `company`
@@ -48461,7 +48482,8 @@ INSERT INTO `company` (`id_company`, `name`, `companyname`, `country`, `state`, 
 (15, 'Chris Wanstrath', 'Github', 'United States', 'California', 'San Francisco', '5485760347', 'github.com', 'github@gmail.com', 'NTQ4MTg0NThlOTQ2YjY5NzA1MDg5YmI3YWUwZjlhMzY=', 'GitHub is the world\'s biggest software collaboration platform.', '59d3a3b4d0628.png', '2017-10-03 14:50:28', 1),
 (16, 'Abidali Neemuchwala', 'Wipro', 'India', 'Karnataka', 'Bengaluru', '8476380730', 'wipro.com', 'wipro@gmail.com', 'NTQ4MTg0NThlOTQ2YjY5NzA1MDg5YmI3YWUwZjlhMzY=', 'Wipro Limited is an Indian Information Technology Services corporation headquartered in Bengaluru, India.', '59d3a425b9652.png', '2017-10-03 14:52:21', 1),
 (17, 'Rajesh Gopinathan', 'Tata Consultancy Services (TCS)', 'India', 'Maharashtra', 'Navi Mumbai', '9678950786', 'tcs.com', 'tcs@gmail.com', 'NTQ4MTg0NThlOTQ2YjY5NzA1MDg5YmI3YWUwZjlhMzY=', 'Tata Consultancy Services Limited (TCS) is an Indian multinational information technology company.', '59d3a49e9b787.png', '2017-10-03 14:54:22', 1),
-(18, 'vinay', 'vinay', 'India', 'Goa', 'Goa', '3434314479', 'vinay.com', 'vinay@gmail.com', 'ODBjYjdkNTUzMzBmZDlmM2FiMTVmNzM2ZTNhYWU4YTU=', 'vvi', '5d4ebb4c75902.jpg', '2019-08-10 12:40:44', 1);
+(18, 'vinay', 'vinay', 'India', 'Goa', 'Goa', '3434314479', 'vinay.com', 'vinay@gmail.com', 'ODBjYjdkNTUzMzBmZDlmM2FiMTVmNzM2ZTNhYWU4YTU=', 'vvi', '5d4ebb4c75902.jpg', '2019-08-10 12:40:44', 1),
+(19, 'Mahmudul hasan', 'xyz', 'Bangladesh', 'Chattagam', 'Chattagam', '1305905848', 'xyz.com', 'abc@gmail.com', 'YjdlNDhmMTk4NjFhNDNjNGM2MDdhOGFlZTBiY2M3Mjg=', 'hello world', '637251ffd9926.jpg', '2022-11-14 14:34:39', 1);
 
 -- --------------------------------------------------------
 
@@ -48469,12 +48491,14 @@ INSERT INTO `company` (`id_company`, `name`, `companyname`, `country`, `state`, 
 -- Table structure for table `countries`
 --
 
-CREATE TABLE `countries` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `countries`;
+CREATE TABLE IF NOT EXISTS `countries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `sortname` varchar(3) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `phonecode` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `phonecode` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `countries`
@@ -48734,36 +48758,46 @@ INSERT INTO `countries` (`id`, `sortname`, `name`, `phonecode`) VALUES
 -- Table structure for table `job_post`
 --
 
-CREATE TABLE `job_post` (
-  `id_jobpost` int(11) NOT NULL,
+DROP TABLE IF EXISTS `job_post`;
+CREATE TABLE IF NOT EXISTS `job_post` (
+  `id_jobpost` int(11) NOT NULL AUTO_INCREMENT,
   `id_company` int(11) NOT NULL,
   `jobtitle` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `minimumsalary` varchar(255) NOT NULL,
-  `maximumsalary` varchar(255) NOT NULL,
+  `minimumsalary` int(11) NOT NULL,
+  `maximumsalary` int(11) NOT NULL,
   `experience` varchar(255) NOT NULL,
   `qualification` varchar(255) NOT NULL,
-  `createdat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `createdat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `jobtype` varchar(255) NOT NULL,
+  `onsite` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_jobpost`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_post`
 --
 
-INSERT INTO `job_post` (`id_jobpost`, `id_company`, `jobtitle`, `description`, `minimumsalary`, `maximumsalary`, `experience`, `qualification`, `createdat`) VALUES
-(22, 12, 'Google Assistant App Developer', '<p>You have to design the layout of the google\\\'s personal home assistant, Extensive Usage of Artificial Intelligence is required along with State of The Art Machine Learning Algorithms.</p>\\r\\n<p>&nbsp;</p>', '5000', '50000', '2', 'BCA', '2017-10-03 14:58:43'),
-(23, 12, 'Google Search Engine Developer', '<p>Your task is to develop new posibilities for the google search engine optimiztions, best working experience and priorities provide.:)</p>', '10000', '100000', '5', 'MCA', '2017-10-03 15:01:05'),
-(24, 17, 'Accounts Professionals', '<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Job Summary:</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Process: Accounting.</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Sub process: R2R (Record to Report) / P2P (Procure to Pay) / O2C (Order to Cash) - (General Ledger/ Accounts Payable)</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Designation: Team Member</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Experience: 1 year to 5 years.</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Job location: Bangalore</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Shift Timing: Should be flexible working in Night Shift.</div>', '1000', '10000', '1', 'BCOM', '2017-10-03 15:07:50'),
-(25, 17, 'Graduate Freshers', '<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Job Summary:&nbsp;</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Process: Back Office-Operations&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>', '2000', '20000', '3', 'BCA, BCOM', '2017-10-03 15:09:37'),
-(26, 16, 'Order Management', '<p><strong style=\\\"padding: 0px; margin: 0px;\\\">Required Skills:</strong></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Excellent communication</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Good Analytical Skills</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Basic computer knowledge</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Strictly willing to work in Night Shifts - Single Shift Only</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>', '3000', '40000', '4', 'BCA, BCOM, MCA', '2017-10-03 15:10:56'),
-(27, 16, 'Technical Support Engineer', '<p><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">We need excellent knowledge on the below:<br style=\\\"padding: 0px; margin: 0px;\\\" /></u></strong></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">SharePoint</u>&nbsp;</strong>: Active Directory, DNS, Global Catalogue, Exchange Server , Office 365, Cloud Computing, Windows Server, SQL, IIS</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">Exchange&nbsp;</u></strong>: Active Directory, DNS Server, DHCP Server, Exchange, Windows Server Administration</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">CRM&nbsp;</u></strong>: Active Directory, DNS Server, DHCP Server, SQL, IIS, Dynamic CRM</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">SFB&nbsp;</u></strong>- Active Directory, DNS Server, DHCP Server, client/server technology, cloud computing</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\">MCP / MCSE/MCSA Certifications preferred</li>\\r\\n</ul>\\r\\n</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>', '40000', '100000', '7', 'MCA, PHD', '2017-10-03 15:11:45'),
-(28, 15, 'Senior Technical Associate (core Java, Rest Api, Github, Svn) ', '<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">Must have experience in Core Java, J2EE, MySQL, SQL Server, JavaScript, JQuery,&nbsp;</ul>\\r\\n</ul>\\r\\n<p><span class=\\\"hlite\\\" style=\\\"padding: 0px; margin: 0px; font-family: Roboto, sans-serif; font-weight: bold;\\\">GitHub</span></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">, SVN, AWS, Azure</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">Highly proficient in Core Java and J2EE technologies.</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">Proficient with Relational DBMS such as MySQL and SQL Server. Experience with JavaScript.</ul>', '60000', '80000', '6', 'BCA', '2017-10-03 15:13:11'),
-(29, 15, 'Pivotal Cloud Foundry Developer', '<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\"><br class=\\\"Apple-interchange-newline\\\" />Relevant exp of 6 months+ in PCF, and 1-2 yrs in Cloud native development</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Pivotal Certifications/Training would be added advantage</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Good Knowledge of Spring and Spring Boot &ndash; 2+ Yrs exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Good knowledge of webservices, specifically &ndash; Restfull &ndash; 2+ yrs exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Messaging experience (Rabbit MQ, Kafka) &bull; Microservices and API based development &ndash; 1+ Yrs</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Container development + 1 Yrs exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Understanding of Cloud Application development using 12 factor Apps</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Spring Cloud</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; PCF Experience Certfiication (Bluemix as an alternative)</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; DevOps &ndash; Github, Mokito, Jenkins, Maven, JUnit &ndash; 2 yrs of exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; (Understanding of Test Driven Development and / or Behavior Driven development)</p>', '50000', '90000', '5', 'BCA', '2017-10-03 15:14:23'),
-(30, 14, 'Bus Analytics Spec', '<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">This Job is eligible for the following work arrangements :Flex Time</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">The Services Insights team is chartered to enable positive business outcomes by driving right behaviors and decisions through bold insights. The&nbsp;</ul>\\r\\n</ul>\\r\\n<p><span class=\\\"hlite\\\" style=\\\"padding: 0px; margin: 0px; font-weight: bold;\\\">Microsoft</span></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">&nbsp;Services Insights team is looking for a BI Program Manager with deep experience enabling solutions with data platform, analytics and integrated data. The role requires a broad range of industry knowledge and a minimum of 10 years implementation experience.</ul>', '8000', '80000', '9', 'MCA', '2017-10-03 15:16:26'),
-(31, 14, 'Consultant', '<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">As a&nbsp;</ul>\\r\\n</ul>\\r\\n<p><span class=\\\"hlite\\\" style=\\\"padding: 0px; margin: 0px; font-weight: bold;\\\">Microsoft</span></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">&nbsp;consultant, you will deliver quality engagements with your expertise, either as an advisor, reviewer or resource in high profile projects to ensure customer value. The ideal candidate must have the ability to combine their technical skills, creativity and customer focus in order to deliver great solutions to the customers and ensure they get the best out of our technologies and solutions. Person in this position should be able to focus on the development of customer business agility and business value, and deep experience with technologies.</ul>', '60000', '85000', '7', 'BCA', '2017-10-03 15:17:09'),
-(32, 13, 'Mainframe Console Administrator', '<p><strong style=\\\"padding: 0px; margin: 0px; font-family: Roboto, sans-serif; color: #666666; font-size: 12px;\\\"><br style=\\\"padding: 0px; margin: 0px;\\\" /></strong><span style=\\\"color: #666666; font-family: Roboto, sans-serif; font-size: 12px;\\\">You will be involved in L2 level who is Capable of Monitoring Tools like ESP and other tools like CA7, Control M z/OS, TWS/OPC, CA-Jobtrac and related products.</span></p>', '7000', '87000', '10', 'PHD', '2017-10-03 15:26:07'),
-(33, 13, 'Websphere Application Server Integration Engineer', '<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Who you are&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Websphere Application Server Integration Engineer&nbsp;</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">What you ll do&nbsp;</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Responsible for detailed design , build and delivery of integration infrastructure services and solutions to business as well as internal projects.&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Proactively contribute to the coordination &amp; process of detailed design , build and unit testing of enhancements and new development.&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Design and deliver automation capabilities for improved time to market and operational efficiency of the integration infrastructure services.&nbsp;</ul>', '46000', '90000', '5', 'BCA, MCA, PHD', '2017-10-03 15:27:07'),
-(34, 18, 'jsol devloper', '<h1><span style=\\\"text-decoration: underline;\\\"><strong>hdaflFHDF</strong></span></h1>', '10000', '20000', '2', 'BE', '2019-08-10 12:47:33');
+INSERT INTO `job_post` (`id_jobpost`, `id_company`, `jobtitle`, `description`, `minimumsalary`, `maximumsalary`, `experience`, `qualification`, `createdat`, `jobtype`, `onsite`) VALUES
+(22, 12, 'Google Assistant App Developer', '<p>You have to design the layout of the google\\\'s personal home assistant, Extensive Usage of Artificial Intelligence is required along with State of The Art Machine Learning Algorithms.</p>\\r\\n<p>&nbsp;</p>', 5000, 30000, '2', 'BCA', '2017-10-03 14:58:43', '', ''),
+(23, 12, 'Google Search Engine Developer', '<p>Your task is to develop new posibilities for the google search engine optimiztions, best working experience and priorities provide.:)</p>', 10000, 100000, '5', 'MCA', '2017-10-03 15:01:05', '', ''),
+(24, 17, 'Accounts Professionals', '<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Job Summary:</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Process: Accounting.</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Sub process: R2R (Record to Report) / P2P (Procure to Pay) / O2C (Order to Cash) - (General Ledger/ Accounts Payable)</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Designation: Team Member</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Experience: 1 year to 5 years.</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Job location: Bangalore</div>\\r\\n<div style=\\\"padding: 0px; margin: 0px 0px 7px; font-family: Roboto, sans-serif; border: 0px; vertical-align: baseline; text-size-adjust: none; color: #666666; text-align: justify;\\\">Shift Timing: Should be flexible working in Night Shift.</div>', 1000, 10000, '1', 'BCOM', '2017-10-03 15:07:50', '', ''),
+(25, 17, 'Graduate Freshers', '<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Job Summary:&nbsp;</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Process: Back Office-Operations&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>', 2000, 20000, '3', 'BCA, BCOM', '2017-10-03 15:09:37', '', ''),
+(26, 16, 'Order Management', '<p><strong style=\\\"padding: 0px; margin: 0px;\\\">Required Skills:</strong></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Excellent communication</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Good Analytical Skills</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Basic computer knowledge</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">* Strictly willing to work in Night Shifts - Single Shift Only</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>', 3000, 40000, '4', 'BCA, BCOM, MCA', '2017-10-03 15:10:56', '', ''),
+(27, 16, 'Technical Support Engineer', '<p><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">We need excellent knowledge on the below:<br style=\\\"padding: 0px; margin: 0px;\\\" /></u></strong></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">SharePoint</u>&nbsp;</strong>: Active Directory, DNS, Global Catalogue, Exchange Server , Office 365, Cloud Computing, Windows Server, SQL, IIS</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">Exchange&nbsp;</u></strong>: Active Directory, DNS Server, DHCP Server, Exchange, Windows Server Administration</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">CRM&nbsp;</u></strong>: Active Directory, DNS Server, DHCP Server, SQL, IIS, Dynamic CRM</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\"><strong style=\\\"padding: 0px; margin: 0px;\\\"><u style=\\\"padding: 0px; margin: 0px;\\\">SFB&nbsp;</u></strong>- Active Directory, DNS Server, DHCP Server, client/server technology, cloud computing</li>\\r\\n</ul>\\r\\n<ul style=\\\"padding: 0px; margin: 0px 0px 0px 20px; list-style: none;\\\">\\r\\n<li style=\\\"padding: 0px; margin: 0px; line-height: 20px; list-style: disc;\\\">MCP / MCSE/MCSA Certifications preferred</li>\\r\\n</ul>\\r\\n</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>', 40000, 100000, '7', 'MCA, PHD', '2017-10-03 15:11:45', '', ''),
+(28, 15, 'Senior Technical Associate (core Java, Rest Api, Github, Svn) ', '<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">Must have experience in Core Java, J2EE, MySQL, SQL Server, JavaScript, JQuery,&nbsp;</ul>\\r\\n</ul>\\r\\n<p><span class=\\\"hlite\\\" style=\\\"padding: 0px; margin: 0px; font-family: Roboto, sans-serif; font-weight: bold;\\\">GitHub</span></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">, SVN, AWS, Azure</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">Highly proficient in Core Java and J2EE technologies.</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; word-wrap: break-word;\\\">Proficient with Relational DBMS such as MySQL and SQL Server. Experience with JavaScript.</ul>', 60000, 80000, '6', 'BCA', '2017-10-03 15:13:11', '', ''),
+(29, 15, 'Pivotal Cloud Foundry Developer', '<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\"><br class=\\\"Apple-interchange-newline\\\" />Relevant exp of 6 months+ in PCF, and 1-2 yrs in Cloud native development</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Pivotal Certifications/Training would be added advantage</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Good Knowledge of Spring and Spring Boot &ndash; 2+ Yrs exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Good knowledge of webservices, specifically &ndash; Restfull &ndash; 2+ yrs exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Messaging experience (Rabbit MQ, Kafka) &bull; Microservices and API based development &ndash; 1+ Yrs</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Container development + 1 Yrs exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Understanding of Cloud Application development using 12 factor Apps</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; Spring Cloud</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; PCF Experience Certfiication (Bluemix as an alternative)</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; DevOps &ndash; Github, Mokito, Jenkins, Maven, JUnit &ndash; 2 yrs of exp</p>\\r\\n<p style=\\\"padding: 5px 0px; margin: 0px; font-family: Roboto, sans-serif; border: 0px; font-size: 12px; vertical-align: baseline; text-size-adjust: none; text-align: justify; color: #666666;\\\">&bull; (Understanding of Test Driven Development and / or Behavior Driven development)</p>', 50000, 90000, '5', 'BCA', '2017-10-03 15:14:23', '', ''),
+(30, 14, 'Bus Analytics Spec', '<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">This Job is eligible for the following work arrangements :Flex Time</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">The Services Insights team is chartered to enable positive business outcomes by driving right behaviors and decisions through bold insights. The&nbsp;</ul>\\r\\n</ul>\\r\\n<p><span class=\\\"hlite\\\" style=\\\"padding: 0px; margin: 0px; font-weight: bold;\\\">Microsoft</span></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">&nbsp;Services Insights team is looking for a BI Program Manager with deep experience enabling solutions with data platform, analytics and integrated data. The role requires a broad range of industry knowledge and a minimum of 10 years implementation experience.</ul>', 8000, 80000, '9', 'MCA', '2017-10-03 15:16:26', '', ''),
+(31, 14, 'Consultant', '<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">As a&nbsp;</ul>\\r\\n</ul>\\r\\n<p><span class=\\\"hlite\\\" style=\\\"padding: 0px; margin: 0px; font-weight: bold;\\\">Microsoft</span></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">&nbsp;consultant, you will deliver quality engagements with your expertise, either as an advisor, reviewer or resource in high profile projects to ensure customer value. The ideal candidate must have the ability to combine their technical skills, creativity and customer focus in order to deliver great solutions to the customers and ensure they get the best out of our technologies and solutions. Person in this position should be able to focus on the development of customer business agility and business value, and deep experience with technologies.</ul>', 60000, 85000, '7', 'BCA', '2017-10-03 15:17:09', '', ''),
+(32, 13, 'Mainframe Console Administrator', '<p><strong style=\\\"padding: 0px; margin: 0px; font-family: Roboto, sans-serif; color: #666666; font-size: 12px;\\\"><br style=\\\"padding: 0px; margin: 0px;\\\" /></strong><span style=\\\"color: #666666; font-family: Roboto, sans-serif; font-size: 12px;\\\">You will be involved in L2 level who is Capable of Monitoring Tools like ESP and other tools like CA7, Control M z/OS, TWS/OPC, CA-Jobtrac and related products.</span></p>', 7000, 87000, '10', 'PHD', '2017-10-03 15:26:07', '', ''),
+(33, 13, 'Websphere Application Server Integration Engineer', '<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Who you are&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Websphere Application Server Integration Engineer&nbsp;</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">What you ll do&nbsp;</ul>\\r\\n</ul>\\r\\n<p><br style=\\\"padding: 0px; margin: 0px;\\\" /><br style=\\\"padding: 0px; margin: 0px;\\\" /></p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Responsible for detailed design , build and delivery of integration infrastructure services and solutions to business as well as internal projects.&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Proactively contribute to the coordination &amp; process of detailed design , build and unit testing of enhancements and new development.&nbsp;</ul>\\r\\n</ul>\\r\\n<p>&nbsp;</p>\\r\\n<ul class=\\\"listing mt10\\\" style=\\\"padding: 0px; margin: 10px 0px 0px; font-family: Roboto, sans-serif; list-style: none; font-size: 13px; line-height: 18px; color: #666666; word-wrap: break-word;\\\">Design and deliver automation capabilities for improved time to market and operational efficiency of the integration infrastructure services.&nbsp;</ul>', 46000, 90000, '5', 'BCA, MCA, PHD', '2017-10-03 15:27:07', '', ''),
+(34, 18, 'jsol devloper', '<h1><span style=\\\"text-decoration: underline;\\\"><strong>hdaflFHDF</strong></span></h1>', 10000, 20000, '2', 'BE', '2019-08-10 12:47:33', '', ''),
+(35, 19, 'swe', '<p>hello</p>', 10000, 20000, '1', 'bsc', '2022-11-14 14:45:22', '', ''),
+(36, 19, 'marketing', '<p>hello</p>', 120000, 300000, '2', 'bsc', '2022-11-15 14:58:45', '', ''),
+(37, 19, 'junior frontend developer', '<p>helllo</p>', 10000, 20000, '1', 'bsc', '2022-11-16 19:43:10', 'full-time', 'remote'),
+(38, 19, 'Python developer', '<p>hhhhhhhhh</p>', 10000, 400000, '2', 'bsc', '2022-11-17 08:32:37', 'contractual', 'hybrid'),
+(39, 19, 'java developer', '<p>addad</p>', 20000, 350000, '5', 'bsc', '2022-11-17 08:39:46', 'contractual', 'on-site'),
+(40, 19, 'Ruby developer', '<p>adadada</p>', 10000, 375000, '4', 'bsc', '2022-11-17 08:42:23', 'contractual', 'hybrid');
 
 -- --------------------------------------------------------
 
@@ -48771,15 +48805,17 @@ INSERT INTO `job_post` (`id_jobpost`, `id_company`, `jobtitle`, `description`, `
 -- Table structure for table `mailbox`
 --
 
-CREATE TABLE `mailbox` (
-  `id_mailbox` int(11) NOT NULL,
+DROP TABLE IF EXISTS `mailbox`;
+CREATE TABLE IF NOT EXISTS `mailbox` (
+  `id_mailbox` int(11) NOT NULL AUTO_INCREMENT,
   `id_fromuser` int(11) NOT NULL,
   `fromuser` varchar(255) NOT NULL,
   `id_touser` int(11) NOT NULL,
   `subject` varchar(256) NOT NULL,
   `message` text NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_mailbox`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mailbox`
@@ -48787,7 +48823,9 @@ CREATE TABLE `mailbox` (
 
 INSERT INTO `mailbox` (`id_mailbox`, `id_fromuser`, `fromuser`, `id_touser`, `subject`, `message`, `createdAt`) VALUES
 (6, 10, 'user', 12, 'hi', '<p>thanks</p>', '2017-10-03 16:12:52'),
-(7, 18, 'company', 14, 'hi', '<p><strong>hi</strong></p>', '2019-08-10 12:57:04');
+(7, 18, 'company', 14, 'hi', '<p><strong>hi</strong></p>', '2019-08-10 12:57:04'),
+(8, 15, 'user', 19, 'sub', '<p>hello! how are u?</p>', '2022-11-15 13:56:05'),
+(9, 19, 'company', 16, 'h', '<p>https://bdjobs.com/</p>', '2022-11-15 14:11:35');
 
 -- --------------------------------------------------------
 
@@ -48795,7 +48833,8 @@ INSERT INTO `mailbox` (`id_mailbox`, `id_fromuser`, `fromuser`, `id_touser`, `su
 -- Table structure for table `reply_mailbox`
 --
 
-CREATE TABLE `reply_mailbox` (
+DROP TABLE IF EXISTS `reply_mailbox`;
+CREATE TABLE IF NOT EXISTS `reply_mailbox` (
   `id_reply` int(11) NOT NULL,
   `id_mailbox` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -48817,11 +48856,13 @@ INSERT INTO `reply_mailbox` (`id_reply`, `id_mailbox`, `id_user`, `usertype`, `m
 -- Table structure for table `states`
 --
 
-CREATE TABLE `states` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `states`;
+CREATE TABLE IF NOT EXISTS `states` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
-  `country_id` int(11) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `country_id` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4121 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `states`
@@ -52956,8 +52997,9 @@ INSERT INTO `states` (`id`, `name`, `country_id`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id_user` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -52976,122 +53018,23 @@ CREATE TABLE `users` (
   `hash` varchar(255) DEFAULT NULL,
   `active` int(11) NOT NULL DEFAULT '1',
   `aboutme` text NOT NULL,
-  `skills` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `skills` text,
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id_user`, `firstname`, `lastname`, `email`, `password`, `address`, `city`, `state`, `contactno`, `qualification`, `stream`, `passingyear`, `dob`, `age`, `designation`, `resume`, `hash`, `active`, `aboutme`, `skills`) VALUES
-(14, 'm', 'm', 'm@m.com', 'YjEwNTFhOWQ4ODkzNTQyMzYyYWQwOTA1MTc3NWY4ZjY=', 'm', 'm', 'm', '7419452194', 'BE', 'CSE', '2019-08-23', '1999-01-14', '20', 'm', '5d4ebdd24a6ba.pdf', '2c21cb1adbf457fe8d0b54603c9a42e4', 1, 'm', 'm');
+(14, 'm', 'm', 'm@m.com', 'YjEwNTFhOWQ4ODkzNTQyMzYyYWQwOTA1MTc3NWY4ZjY=', 'm', 'm', 'm', '7419452194', 'BE', 'CSE', '2019-08-23', '1999-01-14', '20', 'm', '5d4ebdd24a6ba.pdf', '2c21cb1adbf457fe8d0b54603c9a42e4', 1, 'm', 'm'),
+(15, 'mahmud', 'Hasan', 'a@g.com', 'NTUwZGUzMTM4ZGJkNjMwMDJjZDQwZDI1YmRiOWNkMTg=', '', '', '', '', '', '', '', '', '', '', '637254e5ef85f.pdf', '3fd254366f427fe5a388084a4b9c3739', 1, 'h', ''),
+(16, 'john ', 'smith', 'mh.mamun98@gmail.com', 'NTUwZGUzMTM4ZGJkNjMwMDJjZDQwZDI1YmRiOWNkMTg=', '', '', '', '', '', '', '', '', '', '', '63739d2797a8c.pdf', '3adfa6e5d05359823ecd937c7a0a3b83', 1, 'hello', ''),
+(17, 'Mahmudul ', 'Hasan', 'mh.mahmud006@gmail.com', 'ZTM4OGYwMmY3NTBlNjVlYmJhOTVhYjk0OTNjZGEwMWU=', 'baizid, chittagong', 'Chittagong', 'Bangladesh', '1305905848', 'bsc', '', '2022-11-16', '1999-01-01', '23', '', '6374baa1e31ae.pdf', '46b96926b0c13c01de51d3d987b2ccaa', 1, 'hello world', 'c++. js'),
+(18, 'john ', 'doe', 'abc@g.com', 'MDdiNDMyZDI1MTcwYjQ2OWI1NzA5NWNhMjY5YmMyMDI=', '', '', '', '', '', '', '', '', '', '', '6374d58d67030.pdf', '9cdfdfb3ba2c4ea995f0ec4b662d0914', 1, 'abc', '');
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
-
---
--- Indexes for table `apply_job_post`
---
-ALTER TABLE `apply_job_post`
-  ADD PRIMARY KEY (`id_apply`);
-
---
--- Indexes for table `cities`
---
-ALTER TABLE `cities`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `company`
---
-ALTER TABLE `company`
-  ADD PRIMARY KEY (`id_company`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `countries`
---
-ALTER TABLE `countries`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `job_post`
---
-ALTER TABLE `job_post`
-  ADD PRIMARY KEY (`id_jobpost`);
-
---
--- Indexes for table `mailbox`
---
-ALTER TABLE `mailbox`
-  ADD PRIMARY KEY (`id_mailbox`);
-
---
--- Indexes for table `states`
---
-ALTER TABLE `states`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `apply_job_post`
---
-ALTER TABLE `apply_job_post`
-  MODIFY `id_apply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
---
--- AUTO_INCREMENT for table `cities`
---
-ALTER TABLE `cities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48315;
---
--- AUTO_INCREMENT for table `company`
---
-ALTER TABLE `company`
-  MODIFY `id_company` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `countries`
---
-ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
---
--- AUTO_INCREMENT for table `job_post`
---
-ALTER TABLE `job_post`
-  MODIFY `id_jobpost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
---
--- AUTO_INCREMENT for table `mailbox`
---
-ALTER TABLE `mailbox`
-  MODIFY `id_mailbox` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `states`
---
-ALTER TABLE `states`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4121;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
