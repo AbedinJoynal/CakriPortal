@@ -67,14 +67,14 @@ require_once("db.php");
                         </li>
                         <?php } else {
 
-              if (isset($_SESSION['id_user'])) {
-              ?>
+                            if (isset($_SESSION['id_user'])) {
+                            ?>
                         <li>
                             <a href="user/index.php">Dashboard</a>
                         </li>
                         <?php
-              } else if (isset($_SESSION['id_company'])) {
-              ?>
+                            } else if (isset($_SESSION['id_company'])) {
+                            ?>
                         <li>
                             <a href="company/index.php">Dashboard</a>
                         </li>
@@ -124,8 +124,8 @@ require_once("db.php");
                                             <ul class="treeview-menu">
                                                 <li><a href="" class="citySearch" data-target="Dhaka"><i
                                                             class="fa fa-circle-o text-yellow"></i> Dhaka</a></li>
-                                                <li><a href="" class="citySearch" data-target="Chittagong"><i
-                                                            class="fa fa-circle-o text-yellow"></i> Chittagong</a></li>
+                                                <li><a href="" class="citySearch" data-target="Chattagam"><i
+                                                            class="fa fa-circle-o text-yellow"></i> Chattagam</a></li>
                                                 <li><a href="" class="citySearch" data-target="Rajshahi"><i
                                                             class="fa fa-circle-o text-yellow"></i> Rajshahi</a></li>
                                                 <li><a href="" class="citySearch" data-target="khulna"><i
@@ -178,7 +178,8 @@ require_once("db.php");
                                                 <li><a href="" class="jobtypeSearch" data-target='full-time'><i
                                                             class="fa fa-circle-o text-yellow"></i> > full-time</a></li>
                                                 <li><a href="" class="jobtypeSearch" data-target='contractual'><i
-                                                            class="fa fa-circle-o text-yellow"></i> > Contractual</a></li>
+                                                            class="fa fa-circle-o text-yellow"></i> > Contractual</a>
+                                                </li>
                                             </ul>
                                         </li>
                                         <!-- filter remote/onsite -->
@@ -203,7 +204,9 @@ require_once("db.php");
                                                         class="fa fa-angle-down pull-right"></i></span></a>
                                             <ul class="treeview-menu">
                                                 <li><a href="" class="salarySearch" data-target=00000><i
-                                                            class="fa fa-circle-o text-yellow"></i> < 20k</a> </li>
+                                                            class="fa fa-circle-o text-yellow"></i>
+                                                        < 20k</a>
+                                                </li>
                                                 <li><a href="" class="salarySearch" data-target=20000><i
                                                             class="fa fa-circle-o text-yellow"></i> 20k-40k</a></li>
                                                 <li><a href="" class="salarySearch" data-target=40000><i
@@ -213,7 +216,7 @@ require_once("db.php");
                                                 <li><a href="" class="salarySearch" data-target=80000><i
                                                             class="fa fa-circle-o text-yellow"></i> 80-100k</a></li>
                                                 <li><a href="" class="salarySearch" data-target=100000><i
-                                                        class="fa fa-circle-o text-yellow"></i> > 100k</a></li>
+                                                            class="fa fa-circle-o text-yellow"></i> > 100k</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -226,19 +229,19 @@ require_once("db.php");
 
                             <?php
 
-              $limit = 4;
+                            $limit = 4;
 
-              $sql = "SELECT COUNT(id_jobpost) AS id FROM job_post";
-              $result = $conn->query($sql);
-              if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $total_records = $row['id'];
-                $total_pages = ceil($total_records / $limit);
-              } else {
-                $total_pages = 1;
-              }
+                            $sql = "SELECT COUNT(id_jobpost) AS id FROM job_post";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $total_records = $row['id'];
+                                $total_pages = ceil($total_records / $limit);
+                            } else {
+                                $total_pages = 1;
+                            }
 
-              ?>
+                            ?>
 
 
                             <div id="target-content">
@@ -259,17 +262,15 @@ require_once("db.php");
         <!-- /.content-wrapper -->
 
         <footer class="main-footer" style="margin:auto !important;
-        
+
         ">
-       
-        <div
-    style="font-size:2rem !important;
+
+            <div style="font-size:2rem !important;
     font-weight: 400 !important;
-    "
-    class="text-center">
-      <strong>Copyright &copy; 2022 <a href="index.php">Cakri Portal</a>.</strong> All rights
-    reserved.
-    </div>
+    " class="text-center">
+                <strong>Copyright &copy; 2022 <a href="index.php">Cakri Portal</a>.</strong> All rights
+                reserved.
+            </div>
         </footer>
 
         <!-- /.control-sidebar -->
