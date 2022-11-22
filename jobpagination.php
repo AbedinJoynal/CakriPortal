@@ -14,11 +14,7 @@ if (isset($_GET["page"])) {
 
 $start_from = ($page - 1) * $limit;
 
-<<<<<<< Updated upstream
-$sql = "SELECT * FROM job_post ORDER BY createdat DESC LIMIT $start_from, $limit";
-=======
 $sql = "SELECT * FROM job_post order by createdat desc LIMIT $start_from, $limit";
->>>>>>> Stashed changes
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while ($row = $result->fetch_assoc()) {
